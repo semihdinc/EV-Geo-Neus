@@ -141,10 +141,7 @@ class Runner:
             torch.cuda.manual_seed(iter_i)
             torch.manual_seed(iter_i)
 
-
-
-
-            
+            #load the ev dataset here
             data, intrinsic, intrinsic_inv, pose, image_gray = self.dataset.gen_random_rays_at(image_perm[self.iter_step % len(image_perm)], self.batch_size)
                                                       
             rays_o, rays_d, true_rgb, mask = data[:, :3], data[:, 3: 6], data[:, 6: 9], data[:, 9: 10]
@@ -160,6 +157,7 @@ class Runner:
                 mask = torch.ones_like(mask)
 
             mask_sum = mask.sum() + 1e-5
+
             render_out = self.renderer.render(rays_o, rays_d, near, far,
                                               background_rgb=background_rgb,
                                               cos_anneal_ratio=self.get_cos_anneal_ratio(), intrinsics=intrinsic, intrinsics_inv=intrinsic_inv, poses=pose, images=image_gray)
