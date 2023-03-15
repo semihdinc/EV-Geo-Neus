@@ -1,0 +1,20 @@
+# Ignore Mac system files
+.DS_store
+
+# Ignore data folder
+/public_data
+
+# Ignore exp folder
+/exp
+
+# Ignore Nerf snapshot files
+*.msgpack
+
+# Ignore python cache files
+*.pyc
+
+# Ignore files related to API keys
+.env
+
+# Ignore vscode configurations
+.vscode
